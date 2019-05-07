@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+
+before_install:
+  - docker build -t famani/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true famani/docker-react npm run test -- --watchAll=false
